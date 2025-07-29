@@ -3,4 +3,7 @@
 * classe
 * construtores
 * encapsulamento -> get e set
-* 
+* herança
+* polimorfismo
+  *  override -> modifica implementação
+  *  overload -> modifica os parametros ou retorno
