@@ -3,6 +3,8 @@ package ordenacao;
 import java.util.ArrayList;
 import java.util.Random;
 // para documentação /*** + enter
+/***
+* classe responsavel por métodos de gestãpo de lista de numeros inteiros e lista de palavras
 public class Util {
     /***
      * método estático que popula uma lista de números inteiros com valores aleatórios
