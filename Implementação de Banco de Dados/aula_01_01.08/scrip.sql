@@ -1,6 +1,8 @@
+-- 4 crie o comando SQL para a criação do banco de dados BIBLIOTECA
 CREATE DATABASE BIBLIOTECA;
 USE BIBLIOTECA;
 
+-- 5 Crie o comando SQL para a criação das tabelas solicitadas
 /* Lógico_1: */
 CREATE TABLE LIVRO (
     isbn VARCHAR(50) PRIMARY KEY,
@@ -49,16 +51,11 @@ ALTER TABLE LIVRO_AUTOR_ESCRITO ADD CONSTRAINT FK_LIVRO_AUTOR_ESCRITO_2
     FOREIGN KEY (FK_AUTOR_Id)
     REFERENCES AUTOR (Id);
 
-
+-- 6 Crie o comando SQL para inserção dos referidos dados em todas as tabelas
 
 INSERT INTO CATEGORIA (descricao) VALUES ('Literatura Juvenil');
 INSERT INTO CATEGORIA (descricao) VALUES ('Ficção Científica');
 INSERT INTO CATEGORIA (descricao) VALUES ('Humor');
-
-SELECT C.codigo, C.descricao
-FROM CATEGORIA AS C
-WHERE C.descricao LIKE '%Juve%';
-
 SELECT * FROM CATEGORIA;
 
 
