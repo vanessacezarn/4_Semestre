@@ -4,4 +4,7 @@
 * é projetada para ser estendida por outra classe que podem ser estanciadas
 * palavra-chave **abstract** antes de class na declaração da classe
 * contém métodos abstratos e métodos concretos
+* pode conter atributos 
 ## Interface
+* não pode ter atributos
+* possui apenas métodos abstratos
