@@ -29,25 +29,40 @@
 - usada para extrair apenas os registros que 
 ## SQL AND, OR, and NOT
 -
+## SQL ORDER BY
+- quando tem restrição é usado depois do WHERE
+- ASC
+- DESC :  decrecente
 
+## SQL Valores NULL
+- IS NULL
+- IS NOT NULL
 
--- CONSULTAS REALIZADAS EM AULA 
+## SQL Cláusula SELECT TOP
+- recuperar um numero especifico de registro, por exemplo os 3 primeiros
+- dependendo do banco é chamado de LIMIT
 
--- DISTINCT : Liste as diferentes faixas salariais dos funcionários.
-SELECT DISTINCT F.Salario
-FROM FUNCIONARIO as F;
-
-select * from FUNCIONARIO;
-
--- WHERE : Recupere todas as informações do(s) funcionais com primeiro nome “João”.
+## SQL Função MIN() e MAX()
+- A função MIN() retorna o valor mais baixo da coluna selecionada.
+- A função MAX() retorna o valor mais alto da coluna selecionada.
+### SELECT aninhado
+- SELECT dentro de outro SELECT
+- pode ser ussando tanto em WHERE tanto no proprio SELECT
+```.SQL
 SELECT *
 FROM FUNCIONARIO as F
-WHERE f.Pnome = 'João';
+WHERE F.Salario = (SELECT MIN(F.salario) FROM FUNCIONARIO as F)
+```
+```.sql
+SELECT
+	(SELECT COUNT(*) FROM FUNCIONARIO) as Nr_Funcionario,
+	(SELECT COUNT(*) FROM DEPENDENTE) as Nr_Dependentes, 
+	(SELECT COUNT(*) FROM FUNCIONARIO) + (SELECT COUNT(*) FROM DEPENDENTE) as Total;
+```
 
--- WHERE : Recupere todas as informações do(s) funcionais que tem salario menor ou igual a 30000
+## SQL funções COUNT(), AVG() e SUM()
+- COUNT() = retorna o valor médio de uma coluna numérica.
+- AVG() = retorna o valor médio de uma coluna numérica.
+- SUM() = retorna a soma total de uma coluna numérica.
 
-SELECT *
-FROM FUNCIONARIO as F
-WHERE f.Salario <= 30000;
-
-
+## SQL Operador LIKE
