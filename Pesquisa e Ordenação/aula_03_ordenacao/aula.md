@@ -138,7 +138,7 @@
         - bolha: lista ordenada decrescente e se desejar ordenar crescente
         - seleção: lista ordenada
         - inserção: lista 
-### Medir a complexidade e tempo de Ordenação
+### Medir tempo de Ordenação
 - java
 ```.java
     long tempoInicio, tempoFim;

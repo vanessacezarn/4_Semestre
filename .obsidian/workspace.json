@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "518abe186b8091f9",
+        "id": "debb7941cb3e7799",
         "type": "tabs",
         "children": [
           {
-            "id": "4667c1d826998e46",
+            "id": "3a50dbf16ad5675d",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Pesquisa e Ordenação/aula_03/aula.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "aula"
+              "title": "Nova aba"
             }
           }
         ]
@@ -94,7 +90,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Pesquisa e Ordenação/aula_03/aula.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +99,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Links inversos para aula"
+              "title": "Backlinks"
             }
           },
           {
@@ -113,12 +108,11 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Pesquisa e Ordenação/aula_03/aula.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Links de saída para aula"
+              "title": "Links de saída"
             }
           },
           {
@@ -142,13 +136,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Pesquisa e Ordenação/aula_03/aula.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Sumário de aula"
+              "title": "Sumário"
             }
           }
         ]
@@ -168,6 +161,8 @@
       "command-palette:Abrir paleta de comandos": false
     }
   },
-  "active": "4667c1d826998e46",
-  "lastOpenFiles": []
+  "active": "3a50dbf16ad5675d",
+  "lastOpenFiles": [
+    "Pesquisa e Ordenação/aula_03/aula.md"
+  ]
 }
