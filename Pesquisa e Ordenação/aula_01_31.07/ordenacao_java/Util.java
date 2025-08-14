@@ -1,4 +1,4 @@
-package ordenacao;
+package ordenacao_java;
 
 import java.util.ArrayList;
 import java.util.Random;
