@@ -56,6 +56,11 @@ public class Util {
 	        }
 	    }
 	     
+	    /**
+	     * método estático que popula uma lista com numeros vindos de um arquivo .txt 
+	     * @param lista armazena os numeros vindo do arquivo
+	     * @param caminho contem o caminho do arquivo .txt
+	     */
 	    public static void popularArqNumeros(ArrayList<Integer> lista, String caminho) {
 	    	 try (BufferedReader br = new BufferedReader(new FileReader(caminho))) {
 	             String linha;
@@ -72,6 +77,11 @@ public class Util {
 
 	    }
 	    
+	    /**
+	     * método estatico que popula uma lista com palvras vindas de um arquivo .txt
+	     * @param lista armazena as palavras vindas do arquivo
+	     * @param caminho contem o caminho do arquivo .txt 
+	     */
 	    public static void popularArqPalavras(ArrayList<String> lista, String caminho) {
 	    	try (BufferedReader br = new BufferedReader(new FileReader(caminho))) {
 	             String linha;
