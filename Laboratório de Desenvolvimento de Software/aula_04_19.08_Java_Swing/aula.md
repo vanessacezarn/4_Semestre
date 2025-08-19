@@ -89,10 +89,22 @@ if(radMasculino.isSelected()){
     
 
 ## ✦ JTable (tbl)
-- é um com
-
+- é um componente usado para exibir dados em forma de tabela
+  
+ <div align="center">
+   <img width="737" height="171" alt="image" src="https://github.com/user-attachments/assets/a55877e2-baa5-4502-bab2-4195d1698fe9" />
+ </div>
+ 
+- permite a criação e exibição de tabelas de dados, semelhante a planilha ou aplicativo de banco de dados
+- é altamente personalizável e oferece suporte para uma ampla gama de recursos, como ordenação, seleção de células, edição de células, ...
+- para modificar a quantidade e o nome das colunas  ➔ clicar com botão direito em cima da JTabel e abrir as propiedades e então modificar a model
+  
+<div align="center">
+  <img width="1047" height="344" alt="image" src="https://github.com/user-attachments/assets/b123eab4-9832-4480-aab3-2ea913f989b1" />
+</div>
+- codigo ➔ criar uma classe 
+# Projeto final com todos os componentes
 <img width="359" height="439" alt="{E6663B51-DDE5-45C8-AA1D-500A5C6386D2}" src="https://github.com/user-attachments/assets/2adfee0e-7759-4689-85e7-106622e3680d" />
-<img width="359" height="439" alt="{AB49C879-FEF6-4620-A8BD-2F510781176F}" src="https://github.com/user-attachments/assets/6a8c2d17-de17-45c0-83ed-3407e73cbc5d" />
 
 
 
