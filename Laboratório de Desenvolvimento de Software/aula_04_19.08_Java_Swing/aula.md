@@ -102,6 +102,7 @@ if(radMasculino.isSelected()){
 <div align="center">
   <img width="1047" height="344" alt="image" src="https://github.com/user-attachments/assets/b123eab4-9832-4480-aab3-2ea913f989b1" />
 </div>
+
 - codigo ➔ criar uma classe dentro do mesmo pacote, nele vai ter o construtor e método com lista de objetos, já no código do botão inicializar a classe 
 
 ```.java
@@ -128,9 +129,9 @@ if(radMasculino.isSelected()){
 ```
 
 # Projeto final com todos os componentes
-<img width="359" height="439" alt="{E6663B51-DDE5-45C8-AA1D-500A5C6386D2}" src="https://github.com/user-attachments/assets/2adfee0e-7759-4689-85e7-106622e3680d" />
-
-
+<div align="center">
+  <img width="359" height="439" alt="{E6663B51-DDE5-45C8-AA1D-500A5C6386D2}" src="https://github.com/user-attachments/assets/2adfee0e-7759-4689-85e7-106622e3680d" />
+</div>
 
 
 
