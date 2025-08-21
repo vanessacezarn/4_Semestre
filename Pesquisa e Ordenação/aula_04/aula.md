@@ -17,3 +17,5 @@ Trabalha com o conceito de trocas, ou seja, enquanto houver trocas, o algoritmo 
 É considerado bolha, porque 'leva' os maiores para o final da estrutura
 
 Observação: se a estrutura estiver ordenada ou quase, o bolha terá excelente desempenho
+```
+``` 
