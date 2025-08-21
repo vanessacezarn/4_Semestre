@@ -171,8 +171,45 @@ def selecao(lista){
 
 ```
 
+## 3) INSERÇÃO - Insertion Sort - O(n^2)
+- Estável
+- Memória Interna
+- Alta complexidade - O(n^2)
+- A estrutura possui 2 partes/porções (1a é a ordenada; 2a parte é a desordenada)
+- Adequado para vetores e listas
+
+ - Trabalha com o conceito de inserção na porção inicial, com isso, pode diminuir o número de comparações
+
+ - Observação:
+     - i) se a estrutura estiver ordenada ou quase, o inserção terá excelente desempenho
+     - ii) atenção a lista deve ser duplamente encadeada
 
 
 
+- Qual o melhor método de ordenação?
+  - Depende: tamanho da estrutura; de como a estrutura já está previamente ordenada;
+
+```c#
+void insercao(int *vetor, long long int n) {
+    long long int i, j;
+    int tmp;
+    long long int qtdComparacoes = 0, qtdTrocas = 0;
+ 
+    for (i = 1; i < n; i++) {
+        tmp = vetor[i];
+        for (j = i - 1; j >= 0; j--) {
+            qtdComparacoes++;
+            if (tmp < vetor[j]) {
+                vetor[j + 1] = vetor[j];
+                qtdTrocas++;
+            } else break;
+        }
+        vetor[j + 1] = tmp;
+        qtdTrocas++;
+    }
+    cout << "Quantidade comparações: " << qtdComparacoes << endl;
+    cout << "Quantidade trocas: " << qtdTrocas << endl  << endl;;
+}
+```
 
 
