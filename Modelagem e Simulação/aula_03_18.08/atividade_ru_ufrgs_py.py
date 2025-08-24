@@ -8,6 +8,7 @@ Original file is located at
 """
 
 """
+VANESSA CEZAR DO NASCIMENTO 18/08/2025
 Atividade aula 4 - Restaurante Universitário da UFRGS - validação do cartão e desconto de 1 credito por refeição
 - Implementar um modelo discreto por eventos para o fluxo de entrada no RU.
 - Consolidar o uso de listas/dicionários, funções e manipulação de estado do sistema.
