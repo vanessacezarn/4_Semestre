@@ -1,27 +1,67 @@
 # Consultas Complexas
 - utilizar EMPRESA.sql disponivel na github do professor
-```.sql
-
-```
 ## Consultas de recuperação básicas em SQL
-## A estrutura SELECT-FROM-WHERE das consultas sql básicas
-## SQL Arithmetic Operators
+- SQL tem uma instrução básica para recuperar informações de um banco de dados ➔ SELECT
+### A estrutura SELECT-FROM-WHERE das consultas sql básicas
+- forma básica do comando SELECT ➔ composta por três cláusulas
+```.sql
+	SELECT <listaAtributos>
+	FROM <listaTAbela>
+	WHERE <condição>;
+```
+## SQL 
 
+### Arithmetic Operators
+| Operador|  Descrição |   
+| :-------: | :--------: |
+|    +    |     Add      | 
+|    -    |     Subtract | 
+|    *    |     Multiply | 
+|    /    |     Divide   | 
+|    %    |     Modulo   | 
+
+### Bitwise Operators - Operadores Bitwise
 | Operador|  Descrição | 
-| ------- | ---------- | 
-|    +    |     Add    |
-
-## SQL Bitwise Operators - Operadores Bitwise
-
-| Operador|  Descrição | 
-| ------- | ---------- | 
+| :-------: | :----------: | 
 |    &    | Bitwise ADD |
-|    |    | Bitwise OR |
+|    I    | Bitwise OR |
 |    ^    | Bitwise exclusive OR |
 
-## SQL Comparison Operators - Operadores de Comparação
-## SQL Compound Operators - Operadores Compostos
-## SQL Logical Operators - Operadores Lógicos
+### Comparison Operators - Operadores de Comparação
+| Operador|  Descrição | 
+| :-------: | :----------: | 
+|  =  | igual |
+|  >  | maior |
+|  <  | menor | 
+|  >= | maior igual |
+|  <= | menor igual | 
+|  <> | não é igual |
+
+### SQL Compound Operators - Operadores Compostos
+| Operador|  Descrição | 
+| :-------: | :----------: | 
+|  +=  |  |
+|  -=  |  |
+|  *=  |  | 
+|  /= |   |
+|  %= |   | 
+|  &= |   |
+|  ^-= |   |
+|  I*= |   |
+### SQL Logical Operators - Operadores Lógicos
+| Operador|  Descrição | 
+| :-------: | :----------: | 
+|  ALL  |  |
+|  AND  |  |
+|  ANY  |  | 
+|  BETWEEN |   |
+|  EXISTS |   | 
+|  IN |   |
+|  LIKE |   |
+|  NOT |   |
+|  OR |   |
+|  SOME |   |
+
 ## SQL SELECT DISTINCT
 - usada para retornar apenas valores distintos (diferentes)
 ## SQL cláusula WHERE
