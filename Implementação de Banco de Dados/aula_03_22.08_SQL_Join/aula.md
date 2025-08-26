@@ -9,12 +9,6 @@
   <img width="546" height="427" alt="image" src="https://github.com/user-attachments/assets/6288cbe9-ddce-4d59-9d7b-aa3ade32d483" />
 
 </div>
-
-
-
-- CROSS Join ou FULL Join = retorna tudo, todos os funcionarios, com ou sem departamento e todos os departametnos, com ou sem funcionario.
-
-
 ## TIPOS DE JOINS SUPORTADOS NO MySQL
 ### INNER JOIN
 - recupera os dados em comuns,intersecção, departamentos que tem funcionario e os funcionarios que estão em algum departamento
