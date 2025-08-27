@@ -4,7 +4,7 @@
 - SQL tem uma instrução básica para recuperar informações de um banco de dados ➔ SELECT
 ### A estrutura SELECT-FROM-WHERE das consultas sql básicas
 - forma básica do comando SELECT ➔ composta por três cláusulas
-```.sql
+```sql
 	SELECT <listaAtributos>
 	FROM <listaTAbela>
 	WHERE <condição>;
@@ -65,14 +65,14 @@
 ## SQL SELECT DISTINCT
 - usada para retornar apenas valores distintos (diferentes)
   
-```.sql
+```sql
 	SELECT DISTINCT coluna
 	FROM tabela;
 ```
 ## SQL cláusula WHERE
 - utilizada para filtrar registros
 - usada para extrair apenas os registros que atendem a uma condição especificada
-```.sql
+```sql
 	SELECT coluna
 	FROM tabela
 	WHERE condição;
@@ -82,21 +82,21 @@
 - AND e OR são usados para filtrar registros com base em mais de uma condição
 #### AND
 - exibe um registro se todas as condições separadas por AND forem TRUE
-```.sql
+```sql
 	SELECT coluna
 	FROM tabela
 	WHERE condição AND condição2;
 ```
 #### OR
 - exibe um registro se alguma das condições separadas por OR forem TRUE
-```.sql
+```sql
 	SELECT coluna
 	FROM tabela
 	WHERE condição OR condição2;
 ```
 #### NOT
 - exibe um registro se todas as condições forem NOT TRUE
-```.sql
+```sql
 	SELECT coluna
 	FROM tabela
 	WHERE NOT condição ;
@@ -106,7 +106,7 @@
 - quando tem restrição é usado depois do WHERE
 - ASC : crescente ➔ quando não está especificado esse é o padrão
 - DESC :  decrecente
-```.sql
+```sql
 	SELECT coluna
 	FROM tabela
 	ORDER BY coluna ASC|DESC
@@ -121,7 +121,7 @@
 	WHERE coluna IS NULL ;
 ```
 - IS NOT NULL
-```.sql
+```sql
 	SELECT coluna
 	FROM tabela
 	WHERE coluna IS NOT NULL ;
@@ -131,7 +131,7 @@
 - usada para especificar o número de registro a serem retornados, por exemplo os 3 primeiros
 - é útil em tabelas grandes com milhares de registros
 - dependendo do banco é chamado de LIMIT
-```.sql
+```sql
 	SELECT coluna
 	FROM tabela
 	WHERE coluna
@@ -139,13 +139,13 @@
 ```
 ## SQL Função MIN() e MAX()
 - A função MIN() retorna o valor mais baixo da coluna selecionada.
-```.sql
+```sql
 	SELECT MIN(coluna)
 	FROM tabela
 	WHERE condição ;
 ```
 - A função MAX() retorna o valor mais alto da coluna selecionada.
-```.sql
+```sql
 	SELECT MAX(coluna)
 	FROM tabela
 	WHERE condição ;
@@ -153,12 +153,12 @@
 ### SELECT aninhado
 - SELECT dentro de outro SELECT
 - pode ser usado tanto em WHERE tanto no proprio SELECT
-```.SQL
+```SQL
 SELECT *
 FROM FUNCIONARIO as F
 WHERE F.Salario = (SELECT MIN(F.salario) FROM FUNCIONARIO as F)
 ```
-```.sql
+```sql
 SELECT
 	(SELECT COUNT(*) FROM FUNCIONARIO) as Nr_Funcionario,
 	(SELECT COUNT(*) FROM DEPENDENTE) as Nr_Dependentes, 
@@ -167,19 +167,19 @@ SELECT
 
 ## SQL funções COUNT(), AVG() e SUM()
 - COUNT( ) = retorna o número de linhas que correspondem a um critério especificado.
-```.sql
+```sql
 	SELECT COUNT(coluna)
 	FROM tabela
 	WHERE condição ;
 ```
 - AVG( ) = retorna o valor médio de uma coluna numérica.
-```.sql
+```sql
 	SELECT AVG(coluna)
 	FROM tabela
 	WHERE condição ;
 ```
 - SUM( ) = retorna a soma total de uma coluna numérica.
-```.sql
+```sql
 	SELECT SUM(coluna)
 	FROM tabela
 	WHERE condição ;
@@ -204,7 +204,7 @@ SELECT
 ## SQL Operador IN
 - permite que você especifique vários valores em uma cláusula WHERE
 - é uma forma abreviada para múltipla condições OR
-```.sql
+```sql
 	SELECT coluna
 	FROM tabela
 	WHERE condição IN (valor) ;
@@ -212,7 +212,7 @@ SELECT
 ## SQL Operador BETWEEN
 - seleciona valores dentro de um determinado intervalo, os valores podem ser números, texto ou datas
 - é inclusivo, os valores de início e fim estão incluídos
-```.sql
+```sql
 	SELECT coluna
 	FROM tabela
 	WHERE coluna BETWEEN valor AND  valor2;
@@ -223,11 +223,11 @@ SELECT
 - os aliases são frequentemente usados para tornar os nomes das colunas mais legíveis
 - um alias existe apenas durante a execução daquela consulta
 - um alias é criado com a palavra-chave AS
-```.sql
+```sql
 	SELECT coluna AS col
 	FROM tabela
 ```
-```.sql
+```sql
 	SELECT coluna 
 	FROM tabela AS T
 ```
