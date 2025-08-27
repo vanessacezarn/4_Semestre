@@ -16,7 +16,7 @@
 - seleciona registros que têm valores correspondentes em ambas as tabelas
 - inner join seleciona todas as linhas de ambas as tabelas, desde que haja uma correspondência entre as colunas
 - na consulta tem ON = ponto de interseção das tabelas, 
-```.SQL
+```sql
   SELECT nomeColuna
   FROM tabela1
   INNER JOIN tabela2
@@ -25,7 +25,7 @@
 ### LEFT JOIN
 - retornar todos elemento do grupo esquerdo, nesse exemplo todos os funcionario, aqueles que não tem um departamento o campo fica null
 - retorna todos os registros da tabela à esquerda(tabela1) e os registros correspondentes(se houver) da tabela à direita (tabela2)
-```.SQL
+```SQL
   SELECT nomeColuna
   FROM tabela1
   LEFT JOIN tabela2
@@ -35,7 +35,7 @@
 ### RIGHT JOIN
 - retorna todos os departamentos, tanto os que tem funcionario, tanto os que não tem 
 - retorna todos os registros da tabela da direita e os registro correpondentes(se houver) da tabela da esquerda
-```.SQL
+```SQL
   SELECT nomeColuna
   FROM tabela1
   RIGHT JOIN tabela2
@@ -44,7 +44,7 @@
 ### CROSS/FULL JOIN
 - retorna todos os registros de ambas as tabelas
 - NO SQL Server usa p full
-```.SQL
+```SQL
   SELECT nomeColuna
   FROM tabela1
   FULL JOIN tabela2
@@ -53,7 +53,7 @@
 ### SELF JOIN
 - obrigatorio o uso do AS
 - uma junção automática é uma junção regular, mas a tabela é unida a si mesma
-```.SQL
+```SQL
   SELECT nomeColuna
   FROM tabela1 AS T1 
   FULL JOIN tabela2 AS T2
@@ -67,7 +67,7 @@
 - as colunas em cada instrução SELECT também devem estar na mesma ordem
 - seleciona somente valores distintos
 - não salvam duplicatas
-```.sql
+```sql
   SELECT nomeColuna1
   FROM tabela1
   UNION
@@ -76,7 +76,7 @@
 ```
 #### UNION ALL
 - permite valores duplicados
-```.sql
+```sql
   SELECT nomeColuna1
   FROM tabela1
   UNION ALL
@@ -86,7 +86,7 @@
 
 ### SQL EXCEPT
 - valores que estão na primeira tabela e não estão na segunda
-```.sql
+```sql
   SELECT nomeColuna1
   FROM tabela1
   EXCEPT
@@ -95,7 +95,7 @@
 ```
 ### SQL INTERSECT
 - valores que estão nas duas tabelas sem duplicatas
-```.sql
+```sql
   SELECT nomeColuna1
   FROM tabela1
   INTERSECT
@@ -105,7 +105,7 @@
 ## SQL GROUP BY
 - agrupa linhas com os mesmos valores em linhas de resumo, como "encontre o número de clientes em cada país"
 - é frequentemente usada com funções agregadas (COUNT(),MAX(),MIN(),SUM(),AVG()) para agrupar o conjunto de resultados por uma ou mais colunas
-```.SQL
+```SQL
   SELECT nomeColuna
   FROM tabela1 
   WHERE condição
@@ -114,7 +114,7 @@
 
 ## SQL cláusula HAVING
 - foi adicionada ao SQL porque a palavra-chave WHERE não pode ser usada com funções agregadas
-```.SQL
+```SQL
   SELECT nomeColuna
   FROM tabela1 
   WHERE condição
@@ -126,7 +126,7 @@
 ## SQL Operador EXISTS
 - é usado para testar a existência de qualquer registro em uma subconsulta
 - retorna TRUE se a subconsulta retornar um ou mais registros
-```.SQL
+```SQL
   SELECT nomeColuna
   FROM tabela1 
   WHERE EXISTS
@@ -138,7 +138,7 @@
 - retorna um valor booleano como resultado
 - retorna TRUE se QUALQUER um dos valores da suconsulta atender à condição
 - significa que a condição será verdadeira se a operação for verdadeira para qualquer um dos valores no intervalo
-```.SQL
+```SQL
   SELECT nomeColuna
   FROM tabela1 
   WHERE nomeColuna operator ANY
@@ -151,12 +151,12 @@
 - retorna TRUE se TODOS os valores da suconsulta atenderem à condição
 - é usado com instruções SELECT, WHERE e HAVING
 - significa que a condição será verdadeira se a operação for verdadeira para todos os valores no intervalo
-```.SQL
+```SQL
   SELECT ALL nomeColuna
   FROM tabela1 
   WHERE condição
 ```
-```.SQL
+```SQL
   SELECT nomeColuna
   FROM tabela1 
   WHERE nomeColuna operator ALL
