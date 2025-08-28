@@ -38,12 +38,19 @@
 
 ### ✦ CHAVES
 - conceito usado para especificar restrições de integridade básicas de um SGBD relacional
+- O uso adequado de PRIMARY KEY e FOREIGN KEY não só garante a integridade dos dados dentro de um banco de dados mas também define claramente as relações entre diferentes conjuntos de dados, facilitando a realização de consultas complexas e a manutenção da consistência dos dados.
 #### ✸ Chave Primária
 - é uma coluna ou uma combinação de colunas cujos valores distinguem uma linha das demais dentro de uma tabela
+- unicidade ➔ garante que cada valor na coluna ou conjunto de colunas da chave primária seja único em toda a tabela
+- não nulidade ➔ garante que cada registro na tabela tenha um valor na coluna ➔ não permite valores NULL
 #### ✸ Chave Estrangeira
 - uma coluna ou uma combinação de colunas, cujos valores aparecem necessariamente na chave primária de uma tabela
 - mecanismo que permite a implementação de relacionamentos em um banco de dados relacional
-#### ✸ Chave Alternativa
+- é uma restrição usada para estabelecer uma relação de "chave estrangeira" entre duas tabelas
+- integridade referencial ➔ garante que as relações entre as tabelas permaneçam consistentes
+- chaves compostas ➔ quando múltiplas colunas são usadas, elas são conhecidas como chaves compostas
+- ações em cascata ➔ definir restrições de chave estrangeira, pode-se especificar ações em cascata para atualizações e exclusões, CASCATE, SET NULL ou NO ACTION, que determinam o que acontece com as linhs refernciadas quando os dados são alterados ou excluídos na tabela referência
+#### ✸ Chave Alternativa 
 - mais de uma coluna ou combinação de colunas podem servir para distinguir uma linha das demais
 - uma das colunas é escolhida como chave primária
 - as demais colunas ou combinações são denominadas chaves alternativas
@@ -54,14 +61,39 @@
 ```sql
 -- criar um novo banco de dados
 CREATE DATABASE nomeBanco;
+-- selecionar o banco de dados que sera usado
+USE nomeBanco;
 -- remover um banco de dados
 DROP DATABASE nomeBanco;
 -- criar uma tabela
 CREATE TABLE nomeTabela(
     nomeColuna tipoDado restricoes
 );
-
+-- excluir uma tabela existente
+DROP TABLE nomeTabela;
+-- deletar todos os dados de uma tabela
+TRUNCATE TABLE nomeTabela;
+-- alterar o nome de uma tabela
+RENAME TABLE nomeTabela TO novoNomeTabela
+-- fazer em alguma alteração ALTER
+-- adicionar nova coluna
+ALTER TABLE nomeTabela
+ADD nomeNovaColuna tipoDado restricoes;
+-- remover uma coluna
+ALTER TABLE nomeTabela
+DROP COLUMN nomeColuna;
+-- modificar o tipo de dado de uma coluna
+ALTER TABLE nomeTabela
+MODIFY COLUMN nomeColuna novoTipoDado;
+-- adicionar uma restrição de chave estrangeira
+ALTER TABLE nomeTabela
+ADD CONSTRAINT nomeRestricao
+FOREIGN KEY (nomeColuna) REFERENCES outraTabela(colunaOutraTabela);
+-- adicionar uma chave primária
+ALTER TABLE nomeTabela
+ADD PRIMARY KEY (nomeColuna)
 ```
+
 ### TIPOS DE DADOS
 #### DADOS DO TIPO STRING
 #### DADOS DO TIPO NUMERICO
@@ -76,7 +108,17 @@ CREATE TABLE nomeTabela(
 
 |RESTRIÇÃO|DESCRIÇÃO|
 | :----:  |  :----: |
+|NOT NULL| Garante que uma coluna não possa ter um valor NULL|
+|UNIQUE| Garante que todos os valores em uma coluna sejam diferentes|
+|PRIMARY KEY|Combinaçao de NOT NULL e UNIQUE. Identifica de forma **única** cada linha em uma tabela|
+|FOREIGN KEY|Impede ações que destruiriam as ligações entre tabelas|
+|CHECK|Garante que os valores em uma coluna satisfaçam uma condição específica|
+|DEFAULT|define um valor padrão para uma coluna se nenhum valor for especificado|
+|AUTO INCREMENT|Incrementa automaticamente o valor da coluna para cada nova linha inserida|
+|CREATE INDEX| Criar e recuperar dados do banco de dados muito rapidamente|
 
 
   
 ## DATA MANIPULATION LANGUAGE - DML
+- utilizada em sistemas de gerenciamento de banco de dados SQL para manipular dados dentro de tabelas
+- operações permitem que os usuários insiram, consultem, atualizem e excluam dados
