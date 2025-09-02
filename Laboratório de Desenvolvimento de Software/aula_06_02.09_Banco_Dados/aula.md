@@ -68,11 +68,18 @@ public Pessoa getPessoa(int id){
 ### no botão atualizar
 ```java
 private void btn_atualizarActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        String sexo = null;
+        if(rad_masc.isSelected()){
+            sexo = "M";
+        }
+        else if (rad_fem.isSelected()){
+            sexo = "F";
+        }
         Pessoa p = new Pessoa();
         p.setId(Integer.parseInt(txt_ID.getText()));
         p.setNome(txt_nome.getText());
-        p.setSexo(txt_sexo.getText());
-        p.setIdioma(txt_idioma.getText());
+        p.setSexo(sexo);
+        p.setIdioma(cmb_idioma.getSelectedItem().toString());
 
         PessoaDAO pDAO = new PessoaDAO();
         pDAO.editar(p);
@@ -80,7 +87,7 @@ private void btn_atualizarActionPerformed(java.awt.event.ActionEvent evt) {
 
         limparFormulario();
 
-    }                                             
+    }                                               
     private void limparFormulario() {
         txt_id.setText("");
         txt_ID.setText("");
@@ -91,7 +98,34 @@ private void btn_atualizarActionPerformed(java.awt.event.ActionEvent evt) {
     }
 ```
 # EXCLUIR
+### na classe pessoaDAO
+```java
+public void excluir(int id) {
+        try {
+            String sql = "delete from pessoa WHERE id=?";
 
+            PreparedStatement stmt = this.conn.prepareStatement(sql);
+            stmt.setInt(1, id);          
+            stmt.execute();
+            
+        } catch (Exception ex) {
+            System.out.println("Erro ao deletar pessoa: " + ex.getMessage());
+        }
+    }
+```
+### botaão excluir
+```java
+private void btn_excluirActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir?", "Exclusão", JOptionPane.YES_OPTION);
+        if (resposta == JOptionPane.YES_OPTION){
+            PessoaDAO pDAO = new PessoaDAO();
+            pDAO.excluir(Integer.parseInt(txt_ID.getText()));
+            limparFormulario();
+
+        }
+    } 
+```
 <div align="center">
-  
+  <img width="355" height="331" alt="image" src="https://github.com/user-attachments/assets/31120375-3758-41b0-84e6-1888dfab7c0c" />
+
 </div>
