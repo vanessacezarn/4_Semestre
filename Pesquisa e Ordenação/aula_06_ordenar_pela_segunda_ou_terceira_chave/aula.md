@@ -1,29 +1,58 @@
 # REVISÃO 
 - métodos já estudados: bolha, seleção, insersão, agitação, pente, shell
 ### O que é ordenação e por que é importante ordenar estruturas de dados?
-- Ordenar é organizar uma estrutura de dados, seja em ordem crescente ou decrescente, usando uma ou mais chaves de controle, variáveis. Ordenar a estrutura de dados é de suma importância pois torna a busca e/ou pesquisa por dados mais eficientes, devido aos algoritmos baseados em árvores.
+- Ordenar é organizar uma estrutura de dados, seja em ordem crescente ou decrescente, seja por nome, numeração usando uma ou mais chaves de controle, variáveis. Ordenar a estrutura de dados é de suma importância pois torna a busca e/ou pesquisa por dados mais eficientes, devido aos algoritmos baseados em árvores.
+- Ordenar gera eficiência na manipulação de dados, inserção, deletetar, principalmente na busca por dados.
   
 ### Dos vários algoritmos de ordenação, há categorias que os classifica, como: estabilidade | complexidade
 #### Explique o que é estabilidade e complexidade. Se necessário, dar exemplos. Quais os métodos estudados que são estáveis e quais que são instáveis
-  - Estabilidade do algoritmo refere-se a ..., quanto a estabilidade ela pode ser classificada em estável e instável. Estável é quando o processo de ordenação **sempre** garante a ordenação temporária da estrutura, em geral o maior elemento vai sendo "jogado" para o final até a lista ser ordenada, já instável, o processo de ordenação não garante a ordenação tempóraria da estrutura, sendo adequada para lista feitas em c e c++ com alocação dinâmica de memória.
+  - Estabilidade do algoritmo refere-se a ..., quanto a estabilidade ela pode ser classificada em estável e instável. Estável é quando o processo de ordenação **sempre** garante a ordenação temporária da estrutura, em geral o maior elemento vai sendo deslocado para o final até a lista ser ordenada, já instável, o processo de ordenação não garante a ordenação tempóraria da estrutura, sendo adequada para lista feitas em c e c++ com alocação dinâmica de memória.
   - Complexidade é a quantidade de esforço computacional, como tarefa, rotina método, envolvido no algoritmo de ordenação, ela é medida pela quantidade de comparações e trocas realizadas durante a ordenação. A complexidade pode ser subdividida em categorias, algumas delas são, da menos eficiente para a mais eficiente, complexidade fatorial (O(n!)), complexidade polinomial (O(n^k)), complexidade exponencial (O(n^2)), complexidade linear (O(n)) e complexidade logaritmica (O(log(n)).
   - Dos métodos já estudados que são estáveis o bolha, inserção e agitação, já os que são instáveis são o seleção, o pente e o shell.
 
 ### Dos métodos estudados, quais suas complexidades? Como é avaliada a complexidade de um método de ordeanação?
-- A complexidade de um método de ordenação é medida pela quantidade de comparações e trocas realizadas na ordenação. Dos métodos já estudados, os que possuem complexidade exponencial (O(n^2)) são o bolha, seleção, inserção agitação, pente e shell.
+- A complexidade de um método de ordenação é medida pela quantidade de comparações e trocas realizadas na ordenação. Dos métodos já estudados, os que possuem complexidade exponencial (O(n^2)) são o bolha, seleção, inserção, agitação, pente e shell.
   
 ### Dos métodos estudados, qual o melhor método de ordenação?
 - O melhor método de ordenação depende de como está a lista. Para escolher o métodos mais adequado é preciso levar em considerar o tamanho da estrutura e o quanto dela já está ordenado.
   
 ### Faça um método na sua linguagem de preferência que retorne true/True se a lista enviada como parâmetro está ordenada, o false/False caso contrário.
+```py
+def esta_ordenado(lista):
+  for i in range (0, len(lista)-1):
+    if list[i] > lista[i+1]:
+        return False
+    return True
+```
 
 ### Da a sequência de valores na estrutura abaixo, contabilize quantas comparações e quantas trocas há para os métodos: bolha | pente | seleção
 ```
  0   1   2   3   4   5   6   7   8
 30  90  10  20  80  10  20  40  10
+
+BOLHA
+30  10  20  80  10  20  40  10  90
+10  20  30  10  20  40  10  80  90 teve troca? segue ordenando
+10  20  10  20  30  10  40  80  90
+10  10  20  20  10  30  40  80  90
+10  10  20  10  20  30  40  80  90
+10  10  10  20  20  30  40  80  90
+10  10  10  20  20  30  40  80  90
+PENTE
+0   1   2   3   4   5   6   7   8
+30  90  10  20  80  10  20  40  10 DIST = 6
+0   40  10  20  80  10  30  90  10  Tcomp = 3 Ttrocas = 2 DIST = 4
+20  10  10  20  10  40  30  90  80  Tcomp = 7 Ttrocas = 4 DIST = 3 
+20  10  10  20  10  40  30  90  80  Tcomp = 8 Ttrocas = 5 DIST = 2
+10  10  10  20  20  40  30  90  80  Tcomp =  Ttrocas =  DIST = 2
+10  10  10  20  20  40  30  90  80  Tcomp =  Ttrocas =  DIST = 1 -> vira bolha
+10  10  10  20  20  30  40  80  90  teve comparação ? sim, então segue -> DIST = 0 então dist = 1
+10  10  10  20  20  30  40  80  90  
+
+
 ```
 - para o método bolha foram feitas 56 comparações e 20 trocas, para o método pente foram feitas 3 comparações e 2 trocas e para o método seleção foram feitas 36 comparações e 6 trocas.
-  
+
 ### Na sua linguagem de preferência, implemente (sem consulta) seu método escolhido para saber.
 #### bolha
 ```py
@@ -52,7 +81,7 @@ def pente(lista):
         qtd_trocas = 0
         distancia = len(lista)
 
-        while(houve_troca or distancia > 1):
+        while(True):
             distancia = int(distancia / 1.3)
             houve_troca = False
             if distancia < 1 :
@@ -65,6 +94,8 @@ def pente(lista):
                     tmp = lista[i]
                     lista[i] = lista[i+distancia]
                     lista[i+distancia] = tmp
+            if distanci == 1 and not houve_troca:
+              break
                            
             return qtd_comparacoes, qtd_trocas
 ```
@@ -87,3 +118,27 @@ def selecao(lista):
                 
         return qtd_comparacoes, qtd_trocas
 ```
+# COMO ORDENAR PELA SEGUNDA OU TERCEIRA CHAVE
+- Exemplo uma lista de Alunos(codigo, curso, nome) - ordenar por curso e ordenar por nome
+```py
+class Aluno:
+    def __init__(self,nome, curso):
+        self.nome = nome
+        self.curso = curso
+    def __str__(self):
+        return f"Nome: {self.nome}. Curso: {self.curso} "
+
+lista = []
+for i in range(4):
+    nome = input('Digite o nome: ').upper()
+    curso = input('Digite o curso: ').upper()
+
+    lista.append(Aluno(nome, curso))
+
+ordenacao_por_curso_e_nome = sorted(lista, key=lambda aluno: (aluno.curso, aluno.nome))
+
+for i in ordenacao_por_curso_e_nome :
+    print(i)
+```
+## EXERCICIO
+fazer o exemplo acima, só que ao invés de usar o sort utilizar um dos métodos de ordenação usando como chave ordenação 1 o nome do curso e como chave de ordenação 2 o nome do aluno
