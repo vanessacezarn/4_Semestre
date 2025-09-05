@@ -167,5 +167,12 @@ ELSE
 
 ```
 # WHILE
+- utilizado para executar código enquanto uma condição for verdadeira
+- executa apenas um comando
+	- se for necessário executarum bloco de comandos ➔ BEGIN ... END 
 ```sql
+WHILE condicao
+	BEGIN
+		bloco de coigo
+	END;
 ```
