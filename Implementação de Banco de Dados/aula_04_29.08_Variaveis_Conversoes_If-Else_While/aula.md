@@ -166,6 +166,26 @@ ELSE
 	print 'Não recebeu bonus esse ano'
 
 ```
+##### verificar o tamanho de um departamento, se tiver até 1 funcionário o departamento é pequeno, se tiver de 2 a 3 pessoas o departamento é medioe se tiver mais de 3 pessoas o departamento é grande
+```sql
+DECLARE @QtdFuncionarios INT;
+DECLARE @Depart VARCHAR(40);
+SET @Depart = 'Pesquisa';
+
+SELECT @QtdFuncionarios = COUNT(F.Cpf)
+FROM FUNCIONARIO AS F
+INNER JOIN DEPARTAMENTO AS D
+ON F.Dnr = d.Dnumero
+WHERE D.Dnome = @Depart
+
+IF @QtdFuncionarios <= 1
+	PRINT 'O departamento ' + @Depart + ' é pequeno. Possue ' + CAST(@QtdFuncionarios AS VARCHAR(20)) +' funcionarios'
+ELSE IF @QtdFuncionarios >=2 AND @QtdFuncionarios <=3
+	PRINT 'O departamento ' + @Depart + ' é médio. Possue ' + CAST(@QtdFuncionarios AS VARCHAR(20)) +' funcionarios'
+ELSE
+	PRINT 'O departamento ' + @Depart + ' é GRANDE. Possue ' + CAST(@QtdFuncionarios AS VARCHAR(20)) +' funcionarios'
+
+```
 # WHILE
 - utilizado para executar código enquanto uma condição for verdadeira
 - executa apenas um comando
@@ -175,4 +195,16 @@ WHILE condicao
 	BEGIN
 		bloco de coigo
 	END;
+```
+##### teste
+```sql
+DECLARE @valoR INT;
+SET @valoR = 0;
+
+while @valoR<10
+	BEGIN
+		PRINT 'NÚMERO: '+ CAST(@valoR as VARCHAR(2))
+		SET @valoR = @valoR+1
+	END
+
 ```
