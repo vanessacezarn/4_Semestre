@@ -87,5 +87,5 @@ BEGIN
 END;
 
 GO 
-SELECT * FROM fn_
+SELECT * fn_SalarioAnual();
 ```
