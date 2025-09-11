@@ -97,25 +97,42 @@ void quickSort(int *vetor, int ini,  int fim) { //método recurisivo baseado em 
 }
 ```
 
+### CODIGO EM PYTHON
+```py
+    @staticmethod
+    def particiona (lista, ini, fim):
 
-## MERGESORT (como o quicksort, USA O CONCEITO DE DIVIDIR PARA CONQUISTAR)
-- Faz parte de uma categoria de métodos de ordenação que utilizam a divisão da estrutura para acelerar a ordenação. Essa divisão é realizada por meio de RECURSÃO.
+        pivo = lista[ini]
+        i = ini+1
+        j= fim
 
-- Contudo, diferente do QUICKSORT, o MERGESORT sempre divide a estrutura no meio (vai existir uma variável meio)
-    - A estrutura vai possuir 2 porções: parte esquerda e parte direita, divididas pelo MEIO. Pensar como se fosse uma ÁRVORE BINÁRIA
-    - O método possui duas funções: merge (processo recursivo) e o intercala (a ordenação vai funcionar no desempilhamento do processo em que intercala e ordena)
+        while i<=j:
+            # anda da esquerda para direita
+            while i<= fim and lista[i]<=pivo:
+                Ordenacao.qtd_comparacoes +=1
+                i+=1
+
+
+            # anda da direita para esquerda ate achar alguem menor qeu o pivo
+            while j> ini and lista[j] > pivo:
+                Ordenacao.qtd_comparacoes +=1
+                j -= 1
+
+            if i<j:
+                Ordenacao.qtd_trocas +=1
+                lista[i], lista[j] = lista [j], lista[i]
+        # pivo na posicao correta
+        Ordenacao.qtd_trocas +=1
+        lista[ini], lista[j] = lista[j], lista[ini]
+
+        return j
     
+    @staticmethod
+    def quicksort(lista,ini, fim):
+        if ini<fim:
+            pivo = Ordenacao.particiona(lista, ini, fim)
+            Ordenacao.quicksort(lista,ini,pivo-1)
+            Ordenacao.quicksort(lista, pivo +1, fim)
 
+```
 
-## HEAPSORT (método baseado na dinâmica de árvores binárias, contudo em lista)
-- Heapmáximo: garantir que raiz da subarvore seja maior ou igual que seus filhos. Se isso não ocorrer, fazer as trocas
-  - filhoEsquerda = posicaoRaiz * 2
-  - filhoDireita = posicaoRaiz * 2 + 1
-- Troca do primeiro com o último e diminui uma posição o lista (fim)
-
-- ATENÇÃO: o lista deve começar na posição 1
-
-- Teste para filho esquerda 
-  -    -> if (lista[raiz] < lista[raiz * 2]) { troca }
-- Teste para o filho da direita (antes de testar, é preciso ter certeza que o filho exista)
-  -   -> if (raiz * 2 + 1 < n && lista[raiz] < lista[raiz * 2 + 1]) { troca }
