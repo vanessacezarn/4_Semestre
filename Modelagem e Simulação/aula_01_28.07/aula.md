@@ -84,7 +84,8 @@ graph TD;
 * em resumo:
   * variáveis mudam de forma suave e contínua. Isso significa que elas podem assumir qualquer valor dentro de um intervalo, incluindo casas decimais,frações, e valores irracionais.
   * As mudanças ocorrem a todo instante, não em pontos específicos no tempo. como por exemplo em uma temperatura que varia de 20°C para 21°C. Ela passa por 20.1°C, 20.5°C, 20.99°C, etc. Não salta de 20 para 21.
-    
+ 
+## Sistemas Discretos    
 ### Valores específicicos e saltos
 * Características
   * valores específicos(inteiros)
