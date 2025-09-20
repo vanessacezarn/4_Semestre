@@ -1,4 +1,4 @@
-# STRORE PROCEDURE - SP (PROCEDIMENTO ARMAZENADO)- criação e execução no SQL Server 
+# STORED PROCEDURE - SP (PROCEDIMENTO ARMAZENADO)- criação e execução no SQL Server 
 ### DEFINIÇÃO
 - são lotes de declarações SQL que podem ser executadas como uma subrotina
 - permite centralizar a lógica de acesso aos dados em único local, facilitando a manutenção e otimização de código
