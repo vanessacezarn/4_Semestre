@@ -108,6 +108,7 @@ public class VeiculoDAO {
   <img width="447" height="238" alt="image" src="https://github.com/user-attachments/assets/c9ae8ebf-0154-4206-a0bf-958ff59150bb" />
 </div>
 - criar o método preencher pessoa e adiciona-lo no constutor 
+
 ```java
 public CadastrarVeiculo() {
         initComponents();
@@ -121,7 +122,13 @@ public CadastrarVeiculo() {
             cmb_pessoa.addItem(p);  
         }
     }
-``` 
+```
+- na classe Pessoa adicionar o toString para arrumar como aparece os id no combo box
+```java
+public String toString(){
+        return this.id+"-"+this.nome;
+    }
+```
 
 
 
