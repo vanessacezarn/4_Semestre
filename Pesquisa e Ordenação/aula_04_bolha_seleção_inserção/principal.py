@@ -2,14 +2,17 @@ from util import Util
 from ordenacao import Ordenacao
 import time
  
-lista_bolha = []
-lista_normal = []
-lista_selecao = []
-lista_insercao =[]
-Util.popular_lista_aleatoria(lista_bolha, 10000, 100, 20000)
-Util.popular_lista_aleatoria(lista_normal, 10000, 100, 20000)
-Util.popular_lista_aleatoria(lista_selecao, 10000, 100, 20000)
-Util.popular_lista_aleatoria(lista_insercao, 10000, 100, 20000)
+lista_bolha = [7, 1, 4, 2, 3, 9,8 ]
+lista_normal = [7, 1, 4, 2, 3, 9,8 ]
+lista_selecao = [7, 1, 4, 2, 3, 9,8 ]
+lista_insercao =[7, 1, 4, 2, 3, 9,8 ]
+lista_agitacao =[7, 1, 4, 2, 3, 9,8 ]
+lista_pente =[7, 1, 4, 2, 3, 9,8 ]
+
+#Util.popular_lista_aleatoria(lista_bolha, 10000, 100, 20000)
+#Util.popular_lista_aleatoria(lista_normal, 10000, 100, 20000)
+#Util.popular_lista_aleatoria(lista_selecao, 10000, 100, 20000)
+#Util.popular_lista_aleatoria(lista_insercao, 10000, 100, 20000)
 
 
 tempoInicio = time.time()
@@ -41,4 +44,23 @@ tempoFim = time.time()
 print("Tempo da rotina ordenar por INSERÇÃO: ", (tempoFim - tempoInicio) , "s")      
 print('Comparacoes:', qtd_comparacoes, '| Trocas:', qtd_trocas)  
  
+# AGITAÇÃO
+tempoInicio = time.time()
+qtd_comparacoes, qtd_trocas = Ordenacao.agitacao(lista_agitacao)
+tempoFim = time.time()
+print("Tempo da rotina ordenar por AGITAÇÃO: ", (tempoFim - tempoInicio) , "s")      
+print('Comparacoes:', qtd_comparacoes, '| Trocas:', qtd_trocas)  
+ 
+ 
+# PENTE
+tempoInicio = time.time()
+qtd_comparacoes, qtd_trocas = Ordenacao.pente(lista_pente)
+tempoFim = time.time()
+print("Tempo da rotina ordenar por PENTE: ", (tempoFim - tempoInicio) , "s")      
+print('Comparacoes:', qtd_comparacoes, '| Trocas:', qtd_trocas)  
+ 
+
+
+
+
 
