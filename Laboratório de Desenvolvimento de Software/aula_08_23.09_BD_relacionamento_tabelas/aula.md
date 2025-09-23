@@ -129,7 +129,55 @@ public String toString(){
         return this.id+"-"+this.nome;
     }
 ```
+### RELATORIO DE VEICULOS
+#### na classe VeiculoDAO
+```JAVA
+public List<Veiculo> getVeiculo(){
+        try {
+            String sql = "SELECT * FROM veiculo";
+            PreparedStatement stmt = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            ResultSet rs = stmt.executeQuery();
+            List<Veiculo> listaVeiculo = new ArrayList();
+            while(rs.next()){
+                Veiculo v = new Veiculo();
+                v.setId(rs.getInt("id"));
+                v.setModelo(rs.getString("modelo"));
+                v.setPlaca(rs.getString("placa"));
+                Pessoa p = new Pessoa();
+                p.setId(rs.getInt("id_pessoa"));
+                v.setPessoaid(p);
+                listaVeiculo.add(v);
+            }
+            return listaVeiculo;
+        } catch (SQLException ex) {
+            System.out.println("Erro ao consutar todos os veiculos"+ex.getMessage());
+            return null;
+        }
+    }
+```
+#### na interface do relatorio
+```java
+ public RelatorioVeiculo() {
+        initComponents();
+        preencheTabela();
+    }
 
+    public void preencheTabela(){
+        VeiculoDAO vDAO = new VeiculoDAO();
+        List<Veiculo> listaVeiculos = vDAO.getVeiculo();
+        DefaultTableModel tabelaVeiculos = (DefaultTableModel) tbl_veiculos.getModel();
+        for (Veiculo v : listaVeiculos){
+            Object [] obj = new Object[]{
+            v.getId(),
+            v.getModelo(),
+            v.getPlaca(),
+            v.getPessoaid()};
+            tabelaVeiculos.addRow(obj);
+            
+        }
+        
+    }
+```
 
 
 
