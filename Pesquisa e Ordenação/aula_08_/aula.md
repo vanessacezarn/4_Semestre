@@ -78,7 +78,8 @@ if __name__ == '__main__':
     1   2   3   4    5  6   INDICES DA POSIÇÃO
 1*  8   4   15  12   7  3    raiz = p1 (8) filhoEsquerda = p2 (4) --> 8 é maior que 4, então troca
                              raiz = p1 (4)  filhoDireita = p3 (15) --> 4 é maior que 15, não, então mantem
-
+1*  4   8   15  12   7  3    raiz = p2 (8)  filhoEsquerda = p4 (12) --> 8 é maior que 12,não então mantem
+                             raiz = p2(8) 
 ```
 ### CODIGO EM PYTON
 ```
