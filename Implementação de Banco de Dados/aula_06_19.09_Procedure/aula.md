@@ -52,11 +52,19 @@ EXEC usp_Funcionario_Departamento;
 -- utilizado o full join para aparecer tanto funcionarios que não tem departamento quanto departamento que não tem funcionários
 ```
 ### Visualizar conteudo de SP
+- utilizar o precodimento armazenado **sp_helptext** para extrair o conteúdo de texto de um stored procedure (sp)
 - EXEC sp_helptext usp_Funcionario_Departamento
 <img width="426" height="198" alt="{6AD51C80-829B-452C-B895-F4BB3ACA2E25}" src="https://github.com/user-attachments/assets/01bcb426-6f14-43fe-a1aa-d4f57f7668ae" />
 
 - para não permitir essa visualização --> Criptografar --> abaixo de create --> WITH ENCRYPTION
     - O texto do objeto 'usp_Funcionario_Departamento' está criptografado.
+``` sql
+CREATE PROCEDURE sp_Funcionario
+WITH ENCRYPTION
+AS
+SELECT *
+FROM FUNCIONARIO
+```
 
 #### Crie uma procedure que atualiza o salário de um funcionário baseado no CPF, se
 não encontrar nenhum funcionário com o CPF passado exiba uma mensagem.
@@ -178,9 +186,12 @@ exec usp_Funcionario_por_Departamento 'Pesquisa'
 
 ```
 ### PARÂMETROS DE SAÍDA
-- habilitam um procedimento armazenado a retornar dados ao procedimento chamada
-- OUTPUT
-- No procedimento
+- habilitam um procedimento armazenado a retornar dados ao procedimento chamado
+- é como se fosse uma variável compartilhada entre o procedure e quem chamou o procedure
+- utilizado a palavrachave OUTPUT quando o procedimento é criado e também quando é chamadao 
+- No procedimento armazenado, o procedimento de saída aparece como uma variável local --> é atribido um valor a esse parâmetro
+- no procedimento chamador, uma variável deve ser criada para receber o parâmetro de saída --> recupera o valor
+- 
 ```sql
 CREATE PROCEDURE usp_dobro (@valor as INT OUTPUT)
 AS
@@ -192,4 +203,22 @@ DECLARE @custo as INT = 15
 EXEC usp_dobro @custo OUTPUT
 print @custo8
 ```
+#### crie uma procedure que retorna o nome completo de um funcionario com base no CPF passado como parâmetro de entrada
+```SQL
+CREATE PROCEDURE usp_retornsNomeCompleto(@cpf VARCHAR(11), @nome as VARCHAR(25) OUTPUT)
+AS
+begin
+	SELECT CONCAT (F.Pnome,' ',F.Minicial,' ',F.Unome)
+	FROM FUNCIONARIO AS F
+	WHERE F.Cpf = @cpf
+	RETURN @nome
+END
+
+DECLARE @nomecompleto AS VARCHAR(25)
+EXEC usp_retornsNomeCompleto @cpf = '12312312311',@nome = @nomecompleto  OUTPUT
+print @nomecompleto
+```
+### COMANDO RETURN
+- termina incondicionalmente o procedimento e retorna um valor inteiro ao chamador
+- pode ser usado para retornar status de sucesso ou falha de procedimento
  
