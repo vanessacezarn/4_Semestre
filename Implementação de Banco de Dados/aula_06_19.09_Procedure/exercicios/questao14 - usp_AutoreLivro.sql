@@ -1,0 +1,14 @@
+-- 14) PROCEDURE QUE LISTE AUTORES E O TITULO DE SEUS LIVROS ESCRITOS POR ELE
+CREATE PROCEDURE usp_AutoreLivro 
+AS
+BEGIN
+	SELECT A.nome, L.titulo
+	FROM AUTOR AS A
+	INNER JOIN LivroAutor AS LA
+	on A.id = LA.fk_autor
+	INNER JOIN LIVRO AS L
+	ON L.isbn = LA.fk_livro
+	
+END;
+
+EXEC usp_AutoreLivro
