@@ -61,6 +61,7 @@ no construtor da JframeForm
 ## MENU
 - em uma nova JFrame Form adicionar um Menu Bar e dentro dele adicionar os menus arquivo, cadastro e relatorio
 - dentro do menu cadastro adicionar o menu item para cadastro de pessoa e menu item para editar e excluir pessoas
+- com botão direito clicar em cimado menu item --> events --> action --> acitionPerformed
 ```java
    private void menu_CadPessoaActionPerformed(java.awt.event.ActionEvent evt) {                                               
         CadastraPessoas cadPessoa = new CadastraPessoas();
@@ -88,16 +89,17 @@ no construtor da JframeForm
 ```
 <div align="center">
   <img width="426" height="319" alt="{7BE744A0-070A-4A5C-8058-8F847E26BF59}" src="https://github.com/user-attachments/assets/c7a9f5e9-7fbd-4034-b82e-aa765a2397c6" />
-
 </div>
 
+- para não fechar o menu quando o fecha a tela de cadastro
+        - no JFrameForm do Cadastro em propriedades alterar o defaultCloseOperation para DISPOSE
 ## PESQUISA PELO NOME
 em outro JFrame Form criar novamente um JTable e agora também uma opção para digitar um nome 
 <div align="center">
   <img width="433" height="450" alt="{7CCB4BBC-1938-4720-9BE5-08AD826AAC2E}" src="https://github.com/user-attachments/assets/2d847fc6-8951-4d00-9ee5-84d878ab8fd9" />
 </div>
 
-na classe PessoaDAO
+na classe PessoaDAO criar um método que reeba uma parâmetro para pesquisa e alterar a consulta, adicionar o parâmetro na consulta SQL
 
 ```.java
 public List<Pessoa> getPessoasNome(String nome){
@@ -135,7 +137,7 @@ criar a classe preencher tabela
         List<Pessoa> listaPessoas = pDAO.getPessoasNome(txt_nome.getText());
         DefaultTableModel tabelaPessoas = (DefaultTableModel) tbl_pessoas.getModel();
         
-        tabelaPessoas.setNumRows(0);
+        tabelaPessoas.setNumRows(0); // usado para limpar a tabela
        
         for(Pessoa p : listaPessoas){
             Object [] obj = new Object[]{
