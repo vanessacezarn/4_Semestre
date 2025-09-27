@@ -107,7 +107,7 @@ public class VeiculoDAO {
 <div align="center">
   <img width="447" height="238" alt="image" src="https://github.com/user-attachments/assets/c9ae8ebf-0154-4206-a0bf-958ff59150bb" />
 </div>
-- criar o método preencher pessoa e adiciona-lo no constutor 
+- criar um método para preencher o comboBox pessoa, pessoas essas já cadastradas no banco, e adiciona-lo no constutor 
 
 ```java
 public CadastrarVeiculo() {
@@ -127,6 +127,28 @@ public CadastrarVeiculo() {
 ```java
 public String toString(){
         return this.id+"-"+this.nome;
+    }
+```
+- no botão de SALVAR
+```java
+private void btn_salvarActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        Veiculo v = new Veiculo();
+        v.setModelo(txt_modelo.getText());
+        v.setPlaca(txt_placa.getText());
+        Pessoa pessoaId = (Pessoa)cmb_pessoa.getSelectedItem();
+        v.setPessoaid(pessoaId);
+        
+        VeiculoDAO vDAO = new VeiculoDAO();
+        vDAO.inserir(v);
+        JOptionPane.showInternalMessageDialog(null, "CADASTRO REALIZADO COM SUCESSO");
+        
+        limparVeiculo();
+    }                                                                                  
+
+    void limparVeiculo(){
+        txt_modelo.setText("");
+        txt_placa.setText("");
+        cmb_pessoa.setSelectedIndex(0);
     }
 ```
 ### RELATORIO DE VEICULOS
