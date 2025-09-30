@@ -200,6 +200,32 @@ public List<Veiculo> getVeiculo(){
         
     }
 ```
+## PARA PESQUISAR UM VEICULO DE ACORDO COM SEU ID
+```java
+ public Veiculo getVeiculo(int id){
+        try {
+            String sql = "SELECT * FROM veiculo WHERE id = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            Veiculo v = new Veiculo();
+            rs.first();
+            
+            v.setId(rs.getInt("id"));
+            v.setModelo(rs.getString("modelo"));
+            v.setPlaca(rs.getString("placa"));
+            
+            PessoaDAO pDAO = new PessoaDAO();
+            Pessoa p = pDAO.getPessoa(rs.getInt("id_pessoa"));
+            v.setPessoaid(p);            
+            return v;
+        } catch (SQLException ex) {
+            System.out.println("Erro ao consultar veiculo");
+            return null;
+        }
+
+    }
+```
 
 
 
