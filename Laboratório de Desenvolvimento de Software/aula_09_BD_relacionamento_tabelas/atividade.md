@@ -60,6 +60,8 @@ public class conexao {
 ```java
 package beans;
 
+import java.util.Objects;
+
 /**
  * classe que representa a tabela Categorias do banco de dados Produtos
  * cada atributo dessa classe corresponde às colunas da tabela
@@ -68,6 +70,31 @@ public class Categorias {
     private int id;
     private String nome;
 
+    /**
+     * reimplementação do método do equals 
+     * esse método compara esta categoria com outro objeto para verificar igualdade
+     * dois objetos de categoria são considerados iguais se tiverem o mesmo id e o mesmo nome
+     * @param obj é o objeto a ser comparado com esta instancia
+     * @return True, se forem iguais ou False, se não forem iguais
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Categorias other = (Categorias) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        return Objects.equals(this.nome, other.nome);
+    }
+    
     public int getId() {
         return id;
     }
@@ -93,6 +120,7 @@ public class Categorias {
         return this.id+"-"+this.nome;
     }    
 }
+
 
 ```
 ### Produtos
@@ -311,25 +339,27 @@ public class ProdutosDAO {
             System.out.println("Erro ao inserir PRODUTO: "+ex.getMessage());
         }
     }
-
+    
     /**
      * método responsável pela edição de dados de um produto já existente
      * @param p objeto da classe Produtos que contem os novos dados do produto que será alterado
      */
     public void editar(Produtos p){
         try {
-            String sql = "UPDATE produtos set nome=?, preco=?, quantidade=?, categoria_id=?;";
+            String sql = "UPDATE produtos set nome=?, preco=?, quantidade=?, categoria_id=? WHERE id=?;";
             PreparedStatement stmt = this.conn.prepareStatement(sql);
             stmt.setString(1, p.getNome());
             stmt.setFloat(2, p.getPreco());
             stmt.setInt(3, p.getQuantidade());
             stmt.setInt(4, p.getCategoria_id().getId());
+            stmt.setInt(5, p.getId());
             stmt.execute();
         } catch (SQLException ex) {
             System.out.println("Erro ao editar PRODUTO:"+ex.getMessage());
         }
+        
     }
-
+    
     /**
      * métodos responsável pela exclusão de produtos 
      * @param id identificador único de cada produto
@@ -344,11 +374,11 @@ public class ProdutosDAO {
             System.out.println("Erro ao excluir o PRODUTO:"+ex.getMessage());
         }
     }
-
+    
     /**
      * método responsável pela pesquisa de todos os produtos cadastrados no banco de dados
      * @return lista com todos os produtos ou null, caso não consiga consultar
-     */
+     */ 
     public List<Produtos> getProdutos(){
         try {
             String sql = "SELECT * FROM produtos";
@@ -374,7 +404,7 @@ public class ProdutosDAO {
             return null;
         }
     }
-
+    
     /**
      * método responsável por pesquisar um determinado produto através de seu id
      * @param id identificador único de cada produto
@@ -405,6 +435,7 @@ public class ProdutosDAO {
         }
     }
 }
+
 
 ```
 
@@ -546,29 +577,109 @@ private void limparFormulario(){
 
 #### EDITAR E EXCLUIR PRODUTOS
 <div align="center">
-    
+    <img width="370" height="369" alt="image" src="https://github.com/user-attachments/assets/73bbe371-a5df-4ad5-a017-c6bb54d5a45b" />
 </div>
 
+##### preencherCategorias
+```java
+public EditarExcluirProduto() {
+        initComponents();
+        preencherCategorias();
+    }
+public void preencherCategorias(){
+    CategoriasDAO cDAO = new CategoriasDAO();
+    List<Categorias>listaCat = cDAO.getCategorias();
+    for (Categorias c : listaCat){
+        cmb_categoria.addItem(c);
+    } 
+}    
+```
 ##### botão consultar
 ```java
+private void btn_consultarActionPerformed(java.awt.event.ActionEvent evt) {                                              
+    int id_produto = Integer.parseInt(txt_id.getText());
+    ProdutosDAO pDAO = new ProdutosDAO();
+    Produtos p = pDAO.getProdutos(id_produto);
+    if (p == null){
+        limparFormulario();
+        JOptionPane.showMessageDialog(this, "PRODUTO NÃO ENCONTRADO");
+    }else{
+        txt_ID.setText(id_produto+"");
+        txt_nome.setText(p.getNome());
+        txt_preco.setText(p.getPreco()+"");
+        txt_quantidade.setText(p.getQuantidade()+"");
+        Categorias categoriaSelecionada = (Categorias) p.getCategoria_id();
+        cmb_categoria.setSelectedItem(categoriaSelecionada);  
+    }      
+}  
 ```
 ##### botão editar
 ```java
+private void btn_editarActionPerformed(java.awt.event.ActionEvent evt) {                                   
+    Produtos p = new Produtos();
+    p.setId(Integer.parseInt(txt_id.getText()));
+    p.setNome(txt_nome.getText());
+    p.setPreco(Float.parseFloat(txt_preco.getText()));
+    p.setQuantidade(Integer.parseInt(txt_quantidade.getText()));
+    p.setCategoria_id((Categorias)cmb_categoria.getSelectedItem());
+    
+    ProdutosDAO pDAO = new ProdutosDAO();
+    pDAO.editar(p);
+    JOptionPane.showMessageDialog(null, "PRODUTO ATUALIZADO COM SUCESSO");
+    limparFormulario();
+}    
 ```
 ##### botão excluir
 ```java
+private void btn_excluirActionPerformed(java.awt.event.ActionEvent evt) {                                  
+    int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir?", "Exclusão", JOptionPane.YES_OPTION);
+    if (resposta == JOptionPane.YES_OPTION){
+        ProdutosDAO pDAO = new ProdutosDAO();
+        pDAO.excluir(Integer.parseInt(txt_ID.getText()));
+        JOptionPane.showInternalMessageDialog(null, "PRODUTO EXCLUIDO COM SUCESSO");
+        limparFormulario();
+
+    }
+}   
 ```
-#### método para limpar o formulario
-<div align="center">
+##### método para limpar o formulario
+```java
+private void limparFormulario(){
+        txt_id.setText("");
+        txt_ID.setText("");
+        txt_nome.setText("");
+        txt_preco.setText("");
+        txt_quantidade.setText("");
+        cmb_categoria.setSelectedIndex(0);
+    }
     
-</div>
+```
 
 #### RELATORIOS DE PRODUTOS
 <div align="center">
-    
+    <img width="531" height="379" alt="image" src="https://github.com/user-attachments/assets/1147699c-14ae-476f-985c-f43aad8b8660" />
 </div>
 
 ```java
+public RelatorioProdutos() {
+    initComponents();
+    preencherTabela();
+}
+public void preencherTabela(){
+
+    ProdutosDAO pDAO = new ProdutosDAO();
+    List<Produtos> listaProd = pDAO.getProdutos();
+    DefaultTableModel tabela_produtos = (DefaultTableModel) tbl_produtos.getModel();
+    for(Produtos p : listaProd){
+        Object [] obj = new Object[]{
+            p.getId(),
+            p.getNome(),
+            p.getPreco(),
+            p.getQuantidade(),
+            p.getCategoria_id()};
+        tabela_produtos.addRow(obj);
+    }
+}
 ```
 #### RELATORIO DE PRODUTOS COM PESQUISA POR NOME OU CATEGORIA
 <div align="center">
