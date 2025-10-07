@@ -683,8 +683,56 @@ public void preencherTabela(){
 ```
 #### RELATORIO DE PRODUTOS COM PESQUISA POR NOME OU CATEGORIA
 <div align="center">
-    
+    <img width="475" height="430" alt="image" src="https://github.com/user-attachments/assets/47f61dc3-25f4-492e-beee-aa16dbc439f2" />
+
 </div>
 
 ```java
+public RelatorioProdutoFiltro() {
+        initComponents();
+        preencherCategorias();
+    }
+  
+    public void preencherCategorias(){
+        CategoriasDAO cDAO = new CategoriasDAO();
+        List<Categorias>listaCat = cDAO.getCategorias();
+        for (Categorias c : listaCat){
+            cmb_categoria.addItem(c);
+        } 
+    }    
+    
+    public void preencherTabela(){
+        ProdutosDAO pDAO = new ProdutosDAO();
+    
+        List<Produtos> listaProd = pDAO.getProdutos(txt_nome.getText(),(Categorias) cmb_categoria.getSelectedItem());
+        DefaultTableModel tabela_produtos = (DefaultTableModel) tbl_produtos.getModel();
+        tabela_produtos.setNumRows(0);
+        for(Produtos p : listaProd){
+            Object [] obj = new Object[]{
+                p.getId(),
+                p.getNome(),
+                p.getPreco(),
+                p.getQuantidade(),
+                p.getCategoria_id().getNome()};
+            tabela_produtos.addRow(obj);
+        }
+    }
+    
+
+
+
+private void btn_limparActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        txt_nome.setText("");
+        cmb_categoria.setSelectedIndex(0);
+        preencherTabela();
+        
+    }                                          
+
+    private void txt_nomeCaretUpdate(javax.swing.event.CaretEvent evt) {                                     
+        preencherTabela();
+    }                                    
+
+    private void cmb_categoriaItemStateChanged(java.awt.event.ItemEvent evt) {                                               
+        preencherTabela();
+    }          
 ```
