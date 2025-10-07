@@ -1,0 +1,12 @@
+# ATIVIDADE
+- Criar um novo banco de dados que possua as tabelas:
+    - Categorias, com id(PK) e nome
+    - Produtos, com id(PK), nome, preco, quantidade e categoria_id(FK).
+- Para os **PRODUTOS**
+    - Formulário que permita o cadastro de novos produtos, com a possibilidade de selecionar a categoria do produto (comboBox)
+    - Operações de CRUD (criar, ler, atualizar e deletar) devem ser implementadas
+    - Durante a edição a categoria de um produto pode ser alterada
+    - Relatório de todos os produtos cadastrados com nome do produto, preço, quantidade em estoque e categoria associada.
+    - Adicionar uma funcionalidade de busca que permita procurar produtos por nome ou categoria.
+- Para **CATEGORIAS**
+    - Em uma tela separada deve ser implementado cadastrar, editar e listar as categorias
