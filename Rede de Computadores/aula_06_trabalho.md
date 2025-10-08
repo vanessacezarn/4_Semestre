@@ -1,0 +1,59 @@
+# TRABALHO
+UM PC RODANDO EM LINUX E OUTRO EM WINDONS 
+- Windons: cliente
+    - não pode acessar bet365.bet.br 
+- Linux : servidor da empresa 316
+    - proxy (servidor intermediario, entre o cliente e o servidor de internet)
+    - deve bloquear o site : bet365.bet.br 
+    - servidor web ➜ apache
+        - Apache é um servidor web. Isso significa que ele entrega páginas da web (HTML, CSS, etc.) para os navegadores dos usuários.
+    - página html
+        - nome do grupo
+        - mensagem informando que o acesso foi barrado
+    - SSH : (Secure Shell) é um protocolo de rede usado para acessar e gerenciar servidores remotamente de forma segura,
+- Linux:
+  -  Provedor de Serviços de Internet (ISP)
+  -  permiti o acesso (se o servidor da empresa não bloquear, ele também não vai)
+  -  rotear os grupos ➜ os grupos vão poder acessar uns aos outros ➜ TEM QUE TER ROTAS
+ 
+LAN : 200.10.0.24
+WAN : 192.168.0.12
+cada grupo configura um servidor
+escolhe um navegador e configura 
+
+---
+# PASSOS
+## No Rwindows
+1) Configurar no navegador Firefox, que ele tem que acessar a internet por proxy informando o ip do proxy e a porta que foi configurada.
+2) Acessar o servidor linux por ssh
+3) Configurar o IP da LAN do grupo
+
+
+
+## No Linux do grupo
+
+1) Instalar e configurar o servidor web (Apache2)
+```
+```
+3) Criar a página que identifica o grupo e avisa aos usuários que o site solicitado está bloqueado.
+4) Instalar e configurar o Proxy (squid)
+5) Bloquear o site bet365.bet.br por meio do proxy configurado
+6) instalar um servidor de ssh
+7) criar um usuário e colocar ele no grupo do Sudo
+8) Acessar o servidor por ssh com o usuário criado.
+9) Configurar uma subinterface com o IP da LAN do grupo
+10) Configurar a interface física com o endereço da WAN do grupo
+
+## No Servidor Linux do Lab (ISP)
+
+1) Configurar servidor ssh
+2) Criar usuário para o grupo
+3) colocar o usuário no grupo do Sudo
+4) Instalar e configurar um proxy transparente
+5) permitir acesso total aos usuário.
+6) Criar uma subinterface com o IP de Wan do grupo.
+7) Rotear o range de IP do grupo
+
+Todos os grupos devem conseguir acessar a página dos outros grupos
+
+
