@@ -33,16 +33,47 @@ escolhe um navegador e configura
 ## No Linux do grupo
 
 1) Instalar e configurar o servidor web (Apache2)
+
 ```
+sudo apt update --atualizar a lista de pacotes disponíveis.
+sudo apt install apache2 --baixar e instalar o Apache e suas dependências. (já esta instalado)
 ```
+para verificar se  esta instalado abrir "http://localhost" Você deverá ver a página padrão do Apache com a mensagem "It works!".
+```
+sudo systemctl start apache2 -- inicia o apache (parar = sudo systemctl stop apache2, reiniciar = sudo systemctl restart apache2)
+```
+
 3) Criar a página que identifica o grupo e avisa aos usuários que o site solicitado está bloqueado.
-4) Instalar e configurar o Proxy (squid)
-5) Bloquear o site bet365.bet.br por meio do proxy configurado
-6) instalar um servidor de ssh
-7) criar um usuário e colocar ele no grupo do Sudo
-8) Acessar o servidor por ssh com o usuário criado.
-9) Configurar uma subinterface com o IP da LAN do grupo
-10) Configurar a interface física com o endereço da WAN do grupo
+```
+sudo mkdir -p /var/www/bloqueado --criar pasta para a página
+sudo apt install nano --instala editor nano
+nano /var/www/bloqueado/index.html --cria pagina html
+```
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>SITE BLOQUEADO</title>
+</head>
+<body>
+    <h1>ACESSO NEGADO!!!</h1>
+    <p>Você não tem permissão para acessar esse site de apostas</p>
+    <p>GRUPO: Vanessa e Luiza</p>
+</body>
+</html>
+```
+Ctrl + X
+S
+Enter
+
+5) Instalar e configurar o Proxy (squid)
+6) Bloquear o site bet365.bet.br por meio do proxy configurado
+7) instalar um servidor de ssh
+8) criar um usuário e colocar ele no grupo do Sudo
+9) Acessar o servidor por ssh com o usuário criado.
+10) Configurar uma subinterface com o IP da LAN do grupo
+11) Configurar a interface física com o endereço da WAN do grupo
 
 ## No Servidor Linux do Lab (ISP)
 
