@@ -146,8 +146,9 @@ Todos os grupos devem conseguir acessar a página dos outros grupos
 <img width="1105" height="610" alt="image" src="https://github.com/user-attachments/assets/eea891cd-79a8-4a42-8d98-1e4664bccb71" />
 
 ---
-``
-aboratorio@LAB24DT04:~$ sudo nano /etc/netplan/01-netcfg.yaml
+### ajuda 
+```
+laboratorio@LAB24DT04:~$ sudo nano /etc/netplan/01-netcfg.yaml
 laboratorio@LAB24DT04:~$ ls -l /etc/netplan/
 total 4
 -rw-r--r-- 1 root root 104 fev 20  2024 01-network-manager-all.yaml
@@ -192,7 +193,9 @@ drwxr-xr-x   2 root root   4096 out  8 08:57 conf.d
 laboratorio@LAB24DT04:/etc/squid$ sudo vi squid.conf
 laboratorio@LAB24DT04:/etc/squid$ cat squid.conf
 ```
+
 ---
+
 ```
 laboratorio@LAB24DT04:/etc/squid$ sudo nano squid.conf
 laboratorio@LAB24DT04:/etc/squid$ ifconfig
