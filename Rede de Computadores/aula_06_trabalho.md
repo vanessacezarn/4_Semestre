@@ -23,7 +23,7 @@ escolhe um navegador e configura
 
 ---
 # PASSOS
-## No Rwindows
+## No Windows
 1) Configurar no navegador Firefox, que ele tem que acessar a internet por proxy informando o ip do proxy e a porta que foi configurada.
 2) Acessar o servidor linux por ssh
 3) Configurar o IP da LAN do grupo
@@ -68,12 +68,27 @@ S
 Enter
 
 5) Instalar e configurar o Proxy (squid)
+
+instalar
+```
+sudo apt install squid -y
+sudo systemctl status squid --verifica se squid esta ativo (running)
+```
+configurar
+```
+/etc/squid/squid.conf --local onde esta o squi
+sudo cp /etc/squid/squid.conf /etc/squid/squid.conf.backup
+sudo nano /etc/squid/squid.conf
+```
+
 6) Bloquear o site bet365.bet.br por meio do proxy configurado
-7) instalar um servidor de ssh
-8) criar um usuário e colocar ele no grupo do Sudo
-9) Acessar o servidor por ssh com o usuário criado.
-10) Configurar uma subinterface com o IP da LAN do grupo
-11) Configurar a interface física com o endereço da WAN do grupo
+
+   
+8) instalar um servidor de ssh
+9) criar um usuário e colocar ele no grupo do Sudo
+10) Acessar o servidor por ssh com o usuário criado.
+11) Configurar uma subinterface com o IP da LAN do grupo
+12) Configurar a interface física com o endereço da WAN do grupo
 
 ## No Servidor Linux do Lab (ISP)
 
