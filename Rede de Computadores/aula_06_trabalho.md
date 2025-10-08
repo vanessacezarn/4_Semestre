@@ -85,6 +85,15 @@ no arquivo /etc/squid/squid.conf adicionar
 acl minha_rede_local src 200.10.0.24/29
 acl sites_bloqueados dstdomain .bet365.bet.br
 
+http_access deny sites_bloqueados
+
+http_access allow minha_rede_local
+http_access allow localhost
+
+http_access deny all
+
+http_port 3128
+
 
 ```
 
