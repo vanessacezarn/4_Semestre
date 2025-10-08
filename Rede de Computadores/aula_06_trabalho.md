@@ -80,6 +80,14 @@ configurar
 sudo cp /etc/squid/squid.conf /etc/squid/squid.conf.backup
 sudo nano /etc/squid/squid.conf
 ```
+no arquivo /etc/squid/squid.conf adicionar
+```
+acl minha_rede_local src 200.10.0.24/29
+acl sites_bloqueados dstdomain .bet365.bet.br
+
+
+```
+
 
 6) Bloquear o site bet365.bet.br por meio do proxy configurado
 
