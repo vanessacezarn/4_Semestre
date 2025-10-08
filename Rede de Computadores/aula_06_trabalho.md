@@ -103,3 +103,4 @@ sudo nano /etc/squid/squid.conf
 Todos os grupos devem conseguir acessar a página dos outros grupos
 
 
+<img width="1105" height="610" alt="image" src="https://github.com/user-attachments/assets/eea891cd-79a8-4a42-8d98-1e4664bccb71" />
