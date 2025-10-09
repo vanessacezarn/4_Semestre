@@ -204,24 +204,7 @@ sudo apt install net-tools
 laboratorio@LAB24DT04:/etc/squid$ sudo apt net-tools
 E: Operação net-tools inválida
 laboratorio@LAB24DT04:/etc/squid$ sudo apt install net-tools
-Lendo listas de pacotes... Pronto
-Construindo árvore de dependências... Pronto
-Lendo informação de estado... Pronto        
-Os NOVOS pacotes a seguir serão instalados:
-  net-tools
-0 pacotes atualizados, 1 pacotes novos instalados, 0 a serem removidos e 427 não atualizados.
-É preciso baixar 204 kB de arquivos.
-Depois desta operação, 819 kB adicionais de espaço em disco serão usados.
-Obter:1 http://br.archive.ubuntu.com/ubuntu jammy-updates/main amd64 net-tools amd64 1.60+git20181103.0eebece-1ubuntu5.4 [204 kB]
-Baixados 204 kB em 0s (765 kB/s)  
-A seleccionar pacote anteriormente não seleccionado net-tools.
-(Lendo banco de dados ... 216082 ficheiros e directórios actualmente instalados.
-)
-A preparar para desempacotar .../net-tools_1.60+git20181103.0eebece-1ubuntu5.4_a
-md64.deb ...
-A descompactar net-tools (1.60+git20181103.0eebece-1ubuntu5.4) ...
-Configurando net-tools (1.60+git20181103.0eebece-1ubuntu5.4) ...
-A processar 'triggers' para man-db (2.10.2-1) ...
+
 laboratorio@LAB24DT04:/etc/squid$ ifconfig
 enp0s31f6: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         inet 10.104.16.7  netmask 255.255.255.192  broadcast 10.104.16.63
