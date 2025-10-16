@@ -1,12 +1,14 @@
-# TRABALHO
-- classe ordenação --> cuidar orientada a objetos
-### BENCHMARK ORDENAÇÃO
-- colocar menu
-  - carregar arquivo ---> vai conter numeros
-      - informar que o arquivo foi carregado
-  - métodos --> selecinar um ou mais dos metodos selecionados  
+# TRABALHO DE ORDENAÇÃO EM JAVA COM INTERFACE
+- carregar arquivo ➔ arquivo txt com uma lista de números
+  - informar que o arquivo foi carregado
+  - total de numero carregados ➔ textField
+  - esssa lista de números será salva em uma lista      
+    
+- métodos de ordenação ➔ todos os métodos de ordenação estudados até aqui:
+  - bolha, seleção, inserção, agitação, pente, shell, quick e heap
+  - selecinar/deselecionar um ou mais dos métodos de ordenação ➔ utilizar checkbox  
+  - informar os métodos selecionados ➔ jTextArea
 
-- total de numero carregados --> textField
-- Métodos selecionados --> jTextArea
-- Benchmark --> jTextArea
-desafio : cincundar com um treds
+- Informar a quantidade de trocas e comparações e o tempo para ordenar cada um dos métodos selecionados.
+
+
