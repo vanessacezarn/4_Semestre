@@ -196,6 +196,8 @@ para conectar mais de um cliente ao servidor é preciso utilizar threads
 # THREADS
 - é uma unidade de execução leve que permite que um programa execute tarefas concorrentemente
 - é uma forma de tornar uma aplicação capaz de realizar múltiplas operações simultaneamente, aumentando assim a eficiência e melhorando a capacidade de respota
+- é possível criar threads de duas maneiras principais: implementando a interface Runnable ou estendendo a classe Thread
+- amabas as abordagens permite que você execute código de forna concorrente, mas há diferenças na flexibilidade e no design entre elas
 - dois tipos de threads em java:
 ### THREAD PRINCIPAL ou main
 - é iniciada quando um programa é executado
@@ -205,12 +207,175 @@ para conectar mais de um cliente ao servidor é preciso utilizar threads
 - são criadas para executar tarefas específicas em paralelos com a thread principal
 - são úteis para realizar operações que não bloqueiam a execução do programa principal
 
-- é possível criar threads de duas maneiras principais: implementando a interface Runnable ou estendendo a classe Thread
-- amabas as abordagens permite que você execute código de forna concorrente, mas há diferenças na flexibilidade e no design entre elas
-
 ## CRIANDO UM NOVO PROJETO THREADS
+### em uma classe MinhaThread
+```java
+package exemplothreads;
 
+public class MinhaThread extends Thread {
+    private String mensagem;
+    private int intervalo;
 
+    public MinhaThread(String mensagem, int intervalo) {
+        this.mensagem = mensagem;
+        this.intervalo = intervalo;
+    }
+    public void run(){
+        try{
+            while(true){
+                System.out.println(mensagem);
+                Thread.sleep(intervalo);
+            }
+        }catch(InterruptedException e){
+            //lidar com a interrupção 
+        }
+    }
+    
+}
+
+```
+### na classe exemplo threads
+```java
+
+package exemplothreads;
+
+public class ExemploThreads {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // criar e iniciar threads secundaria
+        MinhaThread thread1 = new MinhaThread("Thread 1 - mensagem a cada 1 segundo",1000);
+        MinhaThread thread2 = new MinhaThread("Thread 2 - mensagem a cada 2 segundo",2000);
+        
+        thread1.start();
+        thread2.start();
+        
+        for(int i =0;i<5;i++){
+            System.out.println("Thread Principal - Iteração "+i);
+            try{
+                Thread.sleep(1500);
+            }catch(InterruptedException e){
+                e.printStackTrace();
+            }
+        }
+        thread1.interrupt();
+        thread2.interrupt();
+        
+    }
+    
+}
+
+```
+
+### dentro do projeto bdaula01 criar as classes:
+#### MinhaThread
+```java
+public class MinhaThread extends Thread{
+    private String mensagem;
+    private int intervalo;
+
+    public MinhaThread(String mensagem, int intervalo) {
+        this.mensagem = mensagem;
+        this.intervalo = intervalo;
+    }
+    @Override
+    public void run(){
+        try{
+            while(true){
+                System.out.println(mensagem);
+                Thread.sleep(intervalo);
+            }    
+        }catch(InterruptedException e){
+            System.out.println("Thread interrompida");
+        }
+    }
+}
+
+```
+#### ThreadServer
+```java
+
+import DAO.PessoaDAO;
+import beans.Pessoa;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
+
+public class ThreadServer extends Thread{
+    private Socket clienteSocket;
+
+    public ThreadServer(Socket clienteSocket) {
+        this.clienteSocket = clienteSocket;
+    }
+    @Override
+    public void run(){
+        try{
+            ObjectOutputStream out = new ObjectOutputStream(clienteSocket.getOutputStream());
+            ObjectInputStream in = new ObjectInputStream(clienteSocket.getInputStream());
+            int id = in.readInt();
+            System.out.println("ID Recebido: "+id);
+            
+            PessoaDAO pdao = new PessoaDAO();
+            Pessoa p = pdao.getPessoa(id);
+            out.writeObject(p);
+            
+        }catch (IOException ex) {
+            System.out.println("Erro ao lidar com o cliente");
+        }
+    }
+}
+
+```
+#### e o javaBD
+```java
+
+import DAO.PessoaDAO;
+import beans.Pessoa;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+/**
+ *
+ * será o servidor --> ele fica parado esperando para responder ao cliente
+ * pesquisar sobre porta de redes
+ */
+public class JavaBD {
+    public static void main(String[] args) {
+        int porta = 1234; // use uma constate para a porta (que esteja vazia)
+        try(ServerSocket servidorSocket = new ServerSocket(porta)){
+            System.out.println("Servidor aguardando conexão de porta");
+            while(true){
+                try{
+                    Socket clienteSocket = servidorSocket.accept();
+                    System.out.println("Conexão aceita de "+clienteSocket.getInetAddress());
+
+                    // criar uma nova thread para lidar com o cliente
+                    Thread threadCliente = new ThreadServer(clienteSocket);
+                    threadCliente.start();
+                   
+                    
+                }catch(IOException ex){
+                    System.out.println("Erro ao aceitar conexão do cliente");
+                }
+            }
+        }catch(IOException e){
+            System.out.println("Erro ao criar o servidorSocket");
+        }
+    }
+}
+
+```
 
 
 
