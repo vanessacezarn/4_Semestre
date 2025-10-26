@@ -1,12 +1,19 @@
 # SOCKETS
 - são uma abstração que permite a comunicação entre processos em diferentes dispositivos através de uma rede
-- existe dois tipos principais de socket em java
-## Socket Client (Socket)
+- fornece uma maneira de estabelecer conexões e enviar dados entre computadores, permitindo a construção de aplicações distribuidas
+- em java ➔ a API Socket faz parte do pacote java.net e é usada para criar aplicações cliente-servidor robusta e escaláveis
+- existe dois tipos principais de socket em java:
+### Socket Client (Socket)
 - usado pelo lado que inicia a comunicação
-- se concta a um servidor esperando por conexões
+- se conecta a um servidor esperando por conexões em um endereço específico e porta
 - não tem acesso/conexão com o banco de dados
-## Socket Servidor (ServerSocket)
+### Socket Servidor (ServerSocket)
+- espera por conexões de clientes
+- quando o cliente se conecta, o servidor cria um novo socket dedicado para lidar com essa conexão
 - é quem consulta no banco de dados
+
+## SERVIDOR 
+- é implementado sem interface gráfica
 ### Classe JavaBD que representa o servidor
 ```java
 
@@ -57,9 +64,10 @@ public class JavaBD {
 }
 
 ```
-
+## CLIENTE
 ## Criar um novo projeto CLientePessoaVeiculo
-- no cliente é preciso ter a classe Pessoa, para ele ter conhecimento da estrutura --> copia do projeto BDaula01 (**tem que serem iguais**) --> agora a classe será serializável
+- no cliente é preciso ter a classe Pessoa, para ele ter conhecimento da estrutura 
+- em um pacote beans ➔ copiar a classe Pessoa do projeto BDaula01 (**tem que serem iguais**) ➔ ajustar para a classe passe a ser serializável **em ambos os projetos**
 - 
 ```java
 /*
@@ -183,14 +191,22 @@ private void btn_consultarActionPerformed(java.awt.event.ActionEvent evt) {
         }
     }  
 ```
+para conectar mais de um cliente ao servidor é preciso utilizar threads
+
 # THREADS
-- é uma unidade de excecução leve que permite que um programa
-- dois tipos de threads em java
-### THREAD PRINCIPAL
+- é uma unidade de execução leve que permite que um programa execute tarefas concorrentemente
+- é uma forma de tornar uma aplicação capaz de realizar múltiplas operações simultaneamente, aumentando assim a eficiência e melhorando a capacidade de respota
+- dois tipos de threads em java:
+### THREAD PRINCIPAL ou main
 - é iniciada quando um programa é executado
-- é a main
-- 
+- é responsável por iniciar outras threads e pode executar operações simultaneamente com essas threads secundárias
+  
 ### THREAD SECUNDÁRIA
+- são criadas para executar tarefas específicas em paralelos com a thread principal
+- são úteis para realizar operações que não bloqueiam a execução do programa principal
+
+- é possível criar threads de duas maneiras principais: implementando a interface Runnable ou estendendo a classe Thread
+- amabas as abordagens permite que você execute código de forna concorrente, mas há diferenças na flexibilidade e no design entre elas
 
 ## CRIANDO UM NOVO PROJETO THREADS
 
