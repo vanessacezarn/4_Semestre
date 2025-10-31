@@ -100,15 +100,25 @@ ON L.fk_categoria = C.id
 
 SELECT * FROM nome_exibição order by titulo
 ```
-## ➤ EXCLUSÃI
+## ➤ EXCLUSÃO
 ```SQL
 DROP VIEW [nome_exibição] 
 ```
 
+# SUBCONSULTA
+- é uma declaração SQL embutida em uma consulta externa
+- fornece uma resposta à consulta externa na forma de um valor escalar, listar de valores, ou conjunto de dados, equivalentes a uma expressão, lista ou tabelas para a consulta externa
+## ➤ COMMON TABLE EXPRESSION - CTE
+- expressão de tabela comum é uma variação de uma subconsulta, similiar a uma exibição (view)
+- pode ser acessada múltiplas vezes dentro da consulta principal, como se fosse uma exibição ou tabela
+```SQL
+WITH CTENomeTabela(campo1, campo2)
+AS (SELECT valor1, valor2 FROM tabela2 INNER JOIN tabela3)
 
-
-
-
+SELECT campo1, campo2
+FROM CTENomeTabela
+GROUP BY campo1
+```
 
 
 
